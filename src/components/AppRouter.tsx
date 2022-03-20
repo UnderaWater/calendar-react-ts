@@ -1,14 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Calendar from '../pages/Calendar';
 import Login from '../pages/Login';
 import { privateRoutes, publicRoutes, RouteNames } from '../router/routes';
 
 const AppRouter = () => {
-    const auth = true;
+    const isAuth = false
 
     return (
-        auth ? 
+        isAuth ? 
         <Routes>
                 {privateRoutes.map((route) => {
                     return (
