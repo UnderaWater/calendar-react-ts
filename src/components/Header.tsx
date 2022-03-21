@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 import { RouteNames } from '../router/routes';
 
 const Header: React.FC = () => {
     const router = useNavigate();
-    const auth = false;
+    const { isAuth } = useTypedSelector(state => state.auth);
 
     return (
         <header>
@@ -14,7 +15,7 @@ const Header: React.FC = () => {
                 </div>
                 <nav>
                     <ul>
-                        {auth ?
+                        {isAuth ?
                             <li onClick={() => router(RouteNames.LOGIN)}>
                                 sign in
                             </li>

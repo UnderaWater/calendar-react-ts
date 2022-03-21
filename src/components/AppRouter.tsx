@@ -4,10 +4,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Calendar from '../pages/Calendar';
 import Login from '../pages/Login';
 import { privateRoutes, publicRoutes, RouteNames } from '../router/routes';
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const AppRouter = () => {
-    const isAuth = false
-
+    const {isAuth} = useTypedSelector(state => state.auth);
+    
     return (
         isAuth ? 
         <Routes>
