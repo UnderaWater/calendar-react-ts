@@ -8,6 +8,8 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const AppRouter = () => {
     const {isAuth} = useTypedSelector(state => state.auth);
+
+    console.log(isAuth)
     
     return (
         isAuth ? 
