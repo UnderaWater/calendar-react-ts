@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { AuthActionCreators } from '../store/reducers/auth/action-creators'
 
 const LoginForm: React.FC = () => {
     const dispatch = useDispatch();
-    const { error, isLoading } = useTypedSelector(state => state.auth)
+    const { error, isLoading } = useTypedSelector(state => state.auth);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(AuthActionCreators.login('user@gmail.com', '123'))
+        dispatch(AuthActionCreators.login(email, password))
     }
 
     if(isLoading) {
@@ -27,8 +29,8 @@ const LoginForm: React.FC = () => {
                 {error}
             </div>
             }
-            <input type="text" className="calendar__form-control" name="username" placeholder="Email Address" required autoFocus />
-            <input type="password" className="calendar__form-control" name="password" placeholder="Password" required />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="calendar__form-control" name="username" placeholder="Email Address" required autoFocus />
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="calendar__form-control" name="password" placeholder="Password" required />
             <label className="calendar__form-checkbox">
                 <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" /> Remember me
             </label>

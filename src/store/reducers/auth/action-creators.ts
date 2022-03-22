@@ -8,12 +8,12 @@ export const AuthActionCreators = {
     setIsAuth: (auth: boolean): SetAuthAction => ({ type: AuthActionsEnum.SET_AUTH, payload: auth }),
     setIsLoading: (payload: boolean): SetIsLoadingAction => ({ type: AuthActionsEnum.SET_IS_LOADING, payload: payload }),
     setError: (payload: string): SetErrorAction => ({ type: AuthActionsEnum.SET_ERROR, payload: payload }),
-    login: (email: string, password: string) =>async (dispatch: AppDispatch) => {
+    login: (email: string, password: string) => async (dispatch: AppDispatch) => {
         try {
             dispatch(AuthActionCreators.setIsLoading(true));
             const response = await axios.get<IUser[]>('./user.json');
             const mockUser = response.data.find(user => user.email === email && user.password === password);
-            if(mockUser) {
+            if (mockUser) {
                 console.log('yes')
                 localStorage.setItem('auth', 'true');
                 localStorage.setItem('email', mockUser.email);
@@ -28,11 +28,10 @@ export const AuthActionCreators = {
             dispatch(AuthActionCreators.setError('some error'));
         }
     },
-    logout: () =>async (dispatch: AppDispatch) => {
-        try {
-            
-        } catch (error) {
-            
-        }
+    logout: () => async (dispatch: AppDispatch) => {
+        localStorage.removeItem('auth');
+        localStorage.removeItem('email');
+        dispatch(AuthActionCreators.setUser({} as IUser));
+        dispatch(AuthActionCreators.setIsAuth(false));
     }
 }
