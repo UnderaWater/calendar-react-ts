@@ -1,4 +1,4 @@
-import axios from 'axios';
+import UserApi from '../../../api/UserApi';
 import { AppDispatch } from '../../store';
 import { IUser } from './../../../models/IUser';
 import { AuthActionsEnum, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUserAction } from "./types";
@@ -11,7 +11,7 @@ export const AuthActionCreators = {
     login: (email: string, password: string) => async (dispatch: AppDispatch) => {
         try {
             dispatch(AuthActionCreators.setIsLoading(true));
-            const response = await axios.get<IUser[]>('./user.json');
+            const response = await UserApi.getUsers()
             const mockUser = response.data.find(user => user.email === email && user.password === password);
             if (mockUser) {
                 console.log('yes')
