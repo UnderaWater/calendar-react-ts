@@ -1,5 +1,5 @@
 import React from "react";
-import Calendar from "../pages/Calendar";
+import Calendar from "../pages/EventCalendar";
 import Login from "../pages/Login";
 
 export interface IRoute {

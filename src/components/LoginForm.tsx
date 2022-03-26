@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
         login(email, password)
     }
 
-    if(isLoading) {
+    if (isLoading) {
         return (
             <div>
                 <h1>Loading...</h1>
@@ -30,8 +30,25 @@ const LoginForm: React.FC = () => {
                 {error}
             </div>
             }
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="calendar__form-control" name="username" placeholder="Email Address" required autoFocus />
-            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="calendar__form-control" name="password" placeholder="Password" required />
+            <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                className="calendar__form-control"
+                name="username"
+                placeholder="Email Address"
+                required
+                autoFocus
+            />
+            <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                className="calendar__form-control"
+                name="password"
+                placeholder="Password"
+                required
+            />
             <label className="calendar__form-checkbox">
                 <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" /> Remember me
             </label>
