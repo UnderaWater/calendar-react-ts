@@ -7,7 +7,7 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const Calendar: React.FC = () => {
   const [modal, setModal] = useState(false);
-  const { fetchGuests } = useActions();
+  const { fetchGuests, createEvent } = useActions();
   const { guests } = useTypedSelector(state => state.event) 
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Calendar: React.FC = () => {
         </button>
       </div>
       {modal && <div>
-        <EventForm guests={guests} />
+        <EventForm submit={event => createEvent(event)} guests={guests} />
       </div>}
     </div>
   )
