@@ -3,16 +3,24 @@ import EventForm from '../components/EventForm';
 import Events from '../components/Events';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { IEvent } from '../models/IEvent';
 
 
 const Calendar: React.FC = () => {
   const [modal, setModal] = useState(false);
-  const { fetchGuests, createEvent } = useActions();
-  const { guests } = useTypedSelector(state => state.event) 
+  const { fetchGuests, createEvent, fetchEvents } = useActions();
+  const { guests, events } = useTypedSelector(state => state.event);
+  const { user } = useTypedSelector(state => state.auth)
 
   useEffect(() => {
-    fetchGuests()
-  }, [])
+    fetchGuests();
+    fetchEvents(user.email)
+  }, []);
+
+  const addNewEvent = (event: IEvent) => {
+    setModal(false);
+    createEvent(event);
+  }
 
   return (
     <div>
@@ -23,7 +31,7 @@ const Calendar: React.FC = () => {
         </button>
       </div>
       {modal && <div>
-        <EventForm submit={event => createEvent(event)} guests={guests} />
+        <EventForm submit={addNewEvent} guests={guests} />
       </div>}
     </div>
   )
