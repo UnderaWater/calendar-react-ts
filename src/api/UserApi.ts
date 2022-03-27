@@ -6,4 +6,3 @@ export default class UserApi {
         return axios.get<IUser[]>('./user.json')
     }
 }
-

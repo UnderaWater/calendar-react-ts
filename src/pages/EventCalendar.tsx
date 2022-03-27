@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import EventForm from '../components/EventForm';
 import Events from '../components/Events';
 import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 
 const Calendar: React.FC = () => {
   const [modal, setModal] = useState(false);
-  const { fetchGuests } = useActions()
+  const { fetchGuests } = useActions();
+  const { guests } = useTypedSelector(state => state.event) 
 
   useEffect(() => {
     fetchGuests()
@@ -21,7 +23,7 @@ const Calendar: React.FC = () => {
         </button>
       </div>
       {modal && <div>
-        <EventForm />
+        <EventForm guests={guests} />
       </div>}
     </div>
   )
