@@ -17,8 +17,8 @@ export const AuthActionCreators = {
                 console.log('yes')
                 localStorage.setItem('auth', 'true');
                 localStorage.setItem('email', mockUser.email);
-                dispatch(AuthActionCreators.setIsAuth(true));
                 dispatch(AuthActionCreators.setUser(mockUser));
+                dispatch(AuthActionCreators.setIsAuth(true));
             } else {
                 dispatch(AuthActionCreators.setError('invalid username or password'))
                 console.log('no')

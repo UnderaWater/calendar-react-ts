@@ -24,7 +24,7 @@ const Calendar: React.FC = () => {
 
   return (
     <div>
-      <Events events={[]} />
+      <Events events={events} />
       <div>
         <button onClick={() => setModal(true)}>
           Add event

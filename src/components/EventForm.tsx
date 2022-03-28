@@ -23,12 +23,21 @@ const EventForm: React.FC<EvenFormProps> = (props) => {
     }
 
     const selectDate = (date: React.ChangeEvent<HTMLInputElement>) => {
-        setEvent({...event, date: date.target.value});
+        setEvent({...event, date: date.target.value.split('-').join('.')});
     }
 
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         props.submit({...event, author: user.email});
+    }
+
+    const validate = () => {
+        const date = new Date()
+        const month = date.getMonth() + 1;
+        const day = date.getDate();  
+        const year = date.getFullYear();        
+
+        return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`
     }
 
     return (
@@ -43,7 +52,7 @@ const EventForm: React.FC<EvenFormProps> = (props) => {
                 value={event.description}
                 onChange={e => setEvent({...event, description: e.target.value})}
             />
-            <input type="date" required name='date' onChange={(date) => selectDate(date)} />
+            <input type="date" min={validate()} required name='date' onChange={(date) => selectDate(date)} />
             <select name="select" onChange={(e) => changeHandler(e)}>
                 {props.guests.map((guest) => {
                     return (
