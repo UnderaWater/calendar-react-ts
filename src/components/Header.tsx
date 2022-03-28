@@ -10,13 +10,12 @@ const Header: React.FC = () => {
     const { logout } = useActions();
  
     return (
-        <header>
-            <div>
-                <div>
+        <header className='calendar__header'>
+                <div className='calendar__header-logo'>
                     React Calendar
                 </div>
                 <nav>
-                    <ul>
+                    <ul className='calendar__header-nav'>
                         {isAuth ? <>
                             <li onClick={() => router(RouteNames.LOGIN)}>
                                 {user.email}
@@ -31,8 +30,7 @@ const Header: React.FC = () => {
                             </li>
                         }
                     </ul>
-                </nav>
-            </div>
+                </nav>  
         </header>
     );
 };

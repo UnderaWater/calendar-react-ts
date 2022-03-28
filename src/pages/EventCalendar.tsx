@@ -25,14 +25,14 @@ const Calendar: React.FC = () => {
   return (
     <div>
       <Events events={events} />
-      <div>
-        <button onClick={() => setModal(true)}>
+      <div className='calendar__event-btn'>
+        <button className='calendar__btn' onClick={() => setModal(true)}>
           Add event
         </button>
       </div>
-      {modal && <div>
-        <EventForm submit={addNewEvent} guests={guests} />
-      </div>}
+      {modal &&
+        <EventForm setModal={setModal} modal={modal} submit={addNewEvent} guests={guests} />
+      }
     </div>
   )
 }

@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div className="caledar">
+    <div className="calendar">
       <Header />
       <AppRouter />
     </div>
