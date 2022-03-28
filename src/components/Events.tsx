@@ -22,7 +22,7 @@ const Events: React.FC<EventCalandarProps> = (props) => {
     return (
       <div>
         {currentDayEvents.map((event, index) => (
-          <div key={index}>
+          <div className='calendar__event-item' key={index}>
             {event.description}
           </div>
         ))}
@@ -32,7 +32,7 @@ const Events: React.FC<EventCalandarProps> = (props) => {
 
   return (
     <div>
-      <Calendar dateCellRender={dateCellRender} />
+      <Calendar className='calendar__events' dateCellRender={dateCellRender} />
     </div>
   )
 }

@@ -20,7 +20,7 @@ const Header: React.FC = () => {
                             <li onClick={() => router(RouteNames.LOGIN)}>
                                 {user.email}
                             </li>
-                            <li onClick={logout}>
+                            <li className='calendar__exit' onClick={logout}>
                                 Exit
                             </li>
                         </>

@@ -14,17 +14,23 @@
 
 .calendar__header-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 300px;
+    align-items: center;
 }
 
 .calendar__header-nav li {
     font-size: 24px;
 }
 
+.calendar__header-nav li:last-child {
+    margin-left: 50px;
+}
+
 .calendar__event-btn {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .calendar__btn {
@@ -56,14 +62,87 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    background-color: beige;
+    background-color: #5d5e5e;
+    border-radius: 20px;
 }
 
 .calendar__form-container {
-    width: 300px;
-    height: 300px;
-    padding: 20px;
+    width: 400px;
+    height: 350px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.calendar__form-container input {
+    padding: 5px;
+    color: black;
+    border-radius: 10px;
+    border: 2px solid #1890ff;
+}
+
+.calendar__form-select {
+    padding: 5px;
+    color: black;
+    border-radius: 10px;
+    border: 2px solid #1890ff;
+}
+
+.calendar__modal-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.modal__btn {
+    padding: 3px 10px;
+    border: 1px solid #1890ff;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.modal__btn:hover {
+    background-color: #1890ff;
+}
+
+.calendar__exit {
+    cursor: pointer;
+    border: 1px solid #1890ff;
+    border-radius: 10px;
+    padding: 3px 10px;
+}
+
+.calendar__exit:hover {
+    background-color: #1890ff;
+}
+
+.calendar__login-form {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar__login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar__form-title {
+    font-size: 36px;
+}
+
+.calendar__login-content input {
+    margin-bottom: 40px;
+    padding: 9px;
+    width: 300px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid #1890ff;
+}
+
+.calendar__event-item {
+    color: #d92a2a;
 }

@@ -24,35 +24,36 @@ const LoginForm: React.FC = () => {
     }
 
     return (
-        <form onSubmit={(e) => submit(e)}>
-            <h2 className="calendar__form-title">Please login</h2>
-            {error && <div>
-                {error}
+        <form className='calendar__login-form' onSubmit={(e) => submit(e)}>
+            <div className='calendar__login-content'>
+                <h2 className="calendar__form-title">Please login</h2>
+                {error && <div>
+                    {error}
+                </div>
+                }
+                <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    className="calendar__form-control"
+                    name="username"
+                    placeholder="Email Address: user@gmail.com"
+                    required
+                    autoFocus
+                />
+                <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    className="calendar__form-control"
+                    name="password"
+                    placeholder="Password: 123"
+                    required
+                />
+                <div>
+                    <button className="calendar__btn" type="submit">Login</button>
+                </div>
             </div>
-            }
-            <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="text"
-                className="calendar__form-control"
-                name="username"
-                placeholder="Email Address"
-                required
-                autoFocus
-            />
-            <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                className="calendar__form-control"
-                name="password"
-                placeholder="Password"
-                required
-            />
-            <label className="calendar__form-checkbox">
-                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" /> Remember me
-            </label>
-            <button className="btn" type="submit">Login</button>
         </form>
     )
 }

@@ -56,7 +56,7 @@ const EventForm: React.FC<EvenFormProps> = (props) => {
                         onChange={e => setEvent({ ...event, description: e.target.value })}
                     />
                     <input type="date" min={validate()} required name='date' onChange={(date) => selectDate(date)} />
-                    <select name="select" onChange={(e) => changeHandler(e)}>
+                    <select className='calendar__form-select' name="select" onChange={(e) => changeHandler(e)}>
                         {props.guests.map((guest) => {
                             return (
                                 <option key={guest.email} value={guest.email}>
@@ -65,7 +65,9 @@ const EventForm: React.FC<EvenFormProps> = (props) => {
                             )
                         })}
                     </select>
-                    <button className="btn" type="submit">Create</button>
+                    <div className='calendar__modal-btn'>
+                        <button className="modal__btn" type="submit">Create</button>
+                    </div>
                 </div>
             </form>
         </div>
